@@ -1,22 +1,6 @@
 import { Component } from 'react';
   
 export default class Login extends Component {
-  SFMC_SUBDOMAIN = 'mc.subdomain.com/';
-  CLIENT_ID = '';
-  BACK_URL = '';
-  REDIRECT_URL = 'https://' + SFMC_SUBDOMAIN + 'v2/authorize?response_type=code&client_id=' + CLIENT_ID + 
-    '&redirect_uri=' + encodeURIComponent(BACK_URL);
-    
-  static async getInitialProps (ctx) {
-    let REDIRECT_URL = '/'; // TMP DEV
-
-    if (ctx && ctx.req) {
-      console.log('server side');
-      ctx.res.writeHead(302, {Location: REDIRECT_URL});
-      ctx.res.end();
-    }
-  }
-
   render(){
     return (
       <> 
@@ -24,4 +8,25 @@ export default class Login extends Component {
     )
   }
   
+}
+
+export async function getServerSideProps (ctx) {
+  const SFMC_SUBDOMAIN = 'mc7m29h53rz2cs6n2lc86vgt2vf4';
+  const CLIENT_ID = process.env.CLIENT_ID || '6ytfxnhw69p4xbikj8w5q8wg';
+  const BACK_URL = 'https://36841fbc5916.ngrok.io:3000/';
+  const REDIRECT_URL = 'https://' + SFMC_SUBDOMAIN + '.auth.marketingcloudapis.com/v2/authorize?response_type=code&client_id=' + CLIENT_ID + 
+    '&redirect_uri=' + encodeURIComponent(BACK_URL);
+    
+  if(!ctx.query.code){
+    return {
+      redirect: { 
+        destination: REDIRECT_URL,
+        permanent: true
+      }
+    }
+  }
+  
+  return {
+    props: {}
+  }
 }
