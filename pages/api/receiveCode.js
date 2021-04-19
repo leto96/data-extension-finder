@@ -22,10 +22,10 @@ export default async (req, res) => {
       "Content-Type": "application/json"
     }
   }).then(response => {
-    console.log('response');
+    console.log('response in receive code');
     console.log(response.data);
   }).catch(e => {
-    console.log('e');
+    console.log('erro in receive code');
     console.log(e.data);
   });
 }

@@ -1,7 +1,6 @@
 import serverRoute from '../../utils/serverRoute';
 
 export default (req, res) => {
-  console.log('Login');
   const SFMC_SUBDOMAIN = 'mc7m29h53rz2cs6n2lc86vgt2vf4';
   const CLIENT_ID = process.env.CLIENT_ID || '6ytfxnhw69p4xbikj8w5q8wg';
   const BACK_URL = serverRoute + '/';
