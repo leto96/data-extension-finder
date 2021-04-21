@@ -16,6 +16,9 @@ export default function DataExtensionTable(props){
       <th className="" scope="col">
         <div className="slds-truncate" title="Date Created">Date Created</div>
       </th>
+      <th className="" scope="col">
+        <div className="slds-truncate" title="Path">Path</div>
+      </th>
     </tr>
   </thead>
   <tbody>
